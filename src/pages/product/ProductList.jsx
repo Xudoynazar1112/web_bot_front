@@ -10,7 +10,7 @@ const Product = ({ id, title, price, img, description }) => {
       className="w-72 bg-slate-100 shadow transition-all hover:shadow-xl p-5"
     >
       <div className="mx-auto w-full flex justify-center">
-        <img src={img} alt={title} className="w-1/3" />
+        <img src={img} alt={title} className="w-full" />
       </div>
       <div>
         <h2 className="text-3xl my-3">{title}</h2>
@@ -31,7 +31,7 @@ const ProductList = () => {
   useEffect(() => {
     axios
       .get("http://127.0.0.1:8000/api/")
-      .then((res) => setRealData(res.data))
+      ?.then((res) => setRealData(res.data))
       .catch((error) => console.error(error));
   }, []); // Empty dependency array ensures the API call happens only once
 
@@ -39,7 +39,7 @@ const ProductList = () => {
   
   return (
     <div className="grid md:grid-cols-4 grid-cols-1 place-items-center my-10 gap-10 md:mx-20">
-      {realData.map((pr) => (
+      {realData?.map((pr) => (
         <Product
           key={pr.id} // Add key prop here
           id={pr.id}
