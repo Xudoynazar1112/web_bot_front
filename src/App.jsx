@@ -6,11 +6,13 @@ import NotFound from "./pages/notFound/NotFound";
 import Contact from "./pages/contact/Contact";
 import PrivateRoute from "./privateRoute/privateRoute";
 import Admin from "./pages/admin/Admin";
+import AdminCreate from "./pages/admin/AdminCreate";
+import AdminEdit from "./pages/admin/AdminEdit";
 
 function App() {
   return (
     <>
-      <div className="container w-full">
+      <div className="w-full">
         <Routes>
           <Route path={"*"} element={<NotFound />} />
           <Route path={"/"} element={<ProductList />} />
@@ -25,11 +27,11 @@ function App() {
               </PrivateRoute>
             }
           />
-          {/* <Route
+          <Route
             path="/admin-create"
             element={
               <PrivateRoute>
-                <AdminCreatePage />
+                <AdminCreate />
               </PrivateRoute>
             }
           />
@@ -37,10 +39,10 @@ function App() {
             path="/admin-edit/:id"
             element={
               <PrivateRoute>
-                <AdminEditPage />
+                <AdminEdit />
               </PrivateRoute>
             }
-          /> */}
+          />
         </Routes>
       </div>
     </>

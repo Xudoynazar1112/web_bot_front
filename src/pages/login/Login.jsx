@@ -1,26 +1,29 @@
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 
 const Login = () => {
+  const [loading, setLoading] = useState(false);
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true)
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 
-
-      axios
-        .post("https://vip-card.onrender.com/api/api/v1/custom_auth/token/", {
-          username: username,
-          password: password,
-        })
-        .then((response) => {
-          const accessToken = response.data.access;
-          localStorage.setItem("access_token", accessToken);
-          window.location.href = "/admin";
-        })
-        .catch((error) => {
-          console.error("Login failed:", error);
-        });
+    axios
+      .post("https://vip-card.onrender.com/api/api/v1/custom_auth/token/", {
+        username: username,
+        password: password,
+      })
+      .then((response) => {
+        const accessToken = response.data.access;
+        localStorage.setItem("access_token", accessToken);
+        window.location.href = "/admin";
+      })
+      .catch((error) => {
+        console.error("Login failed:", error);
+      }).finally(() => {
+        setLoading(false);
+      });
   };
 
   return (
@@ -103,9 +106,10 @@ const Login = () => {
               </div>
               <button
                 type="submit"
+                disabled={loading}
                 className="w-full text-white bg-blue-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
               >
-                Sign in
+                {loading ? "Signing in ..." : "Sign in"}
               </button>
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                 Don’t have an account yet?{" "}

@@ -7,7 +7,7 @@ const ProductDetail = () => {
 
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:8000/api/")
+      .get("https://web-bot-back.onrender.com/api/")
       ?.then((res) => setRealData(res.data))
       .catch((error) => console.error(error));
   }, []); // Empty dependency array ensures the API call happens only once
