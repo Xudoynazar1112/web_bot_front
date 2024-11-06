@@ -39,6 +39,7 @@ const ProductList = () => {
   
   return (
     <div className="grid md:grid-cols-4 grid-cols-1 place-items-center my-10 gap-10 md:mx-20">
+      <marquee behavior="" direction="">Ma'lumotlarni sekin yuklanmoqda iltimos kuting...</marquee>
       {realData?.map((pr) => (
         <Product
           key={pr.id} // Add key prop here
