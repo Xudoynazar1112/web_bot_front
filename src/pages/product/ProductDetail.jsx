@@ -17,7 +17,7 @@ const ProductDetail = () => {
   console.log(realData);
 
   return (
-    <div className="flex justify-between items-center gap-12 place-items-center md:mx-20 mx-10 bg-slate-100 rounded-xl p-5">
+    <div className="flex flex-col md:flex-row justify-between items-center gap-12 md:mx-20 mx-10 bg-slate-100 rounded-xl p-5">
       <div className="md:w-1/3 w-full">
         <img src={item?.photo} className='w-full' alt="product image" />
       </div>
